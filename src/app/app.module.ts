@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { FCM } from '@ionic-native/fcm/ngx';
+import { FirebaseCrashlytics } from '@ionic-native/firebase-crashlytics/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,8 +24,9 @@ import { FCM } from '@ionic-native/fcm/ngx';
     StatusBar,
     SplashScreen,
     FCM,
+    FirebaseCrashlytics,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

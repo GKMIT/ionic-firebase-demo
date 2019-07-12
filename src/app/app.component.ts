@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { PushNotificationService } from './providers/push-notification.service';
+import { FcrashlyticsService } from './providers/fcrashlytics.service';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private pushNotificationService: PushNotificationService,
+    private fcrashlyticsService: FcrashlyticsService,
   ) {
     this.initializeApp();
   }
@@ -37,6 +39,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.pushNotificationService.read();
+      this.fcrashlyticsService.initialize();
     });
   }
 

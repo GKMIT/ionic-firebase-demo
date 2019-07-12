@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { PushNotificationService } from '../providers/push-notification.service';
-import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -9,19 +8,15 @@ import { Platform } from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(private platform: Platform, private pushNotificationService: PushNotificationService) { }
+  constructor(private pushNotificationService: PushNotificationService) { }
 
   ionViewDidEnter() {
     console.log('ionViewDidEnter');
-    this.platform.ready().then(() => {
-      this.pushNotificationService.subscribeToTopic('home');
-    });
+    this.pushNotificationService.subscribeToTopic('home');
   }
 
   ionViewDidLeave() {
     console.log('ionViewDidLeave');
-    this.platform.ready().then(() => {
-      this.pushNotificationService.unsubscribeFromTopic('home');
-    });
+    this.pushNotificationService.unsubscribeFromTopic('home');
   }
 }
