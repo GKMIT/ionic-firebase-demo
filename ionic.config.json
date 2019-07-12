@@ -1,0 +1,7 @@
+{
+  "name": "firebasePush",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
