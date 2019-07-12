@@ -30,13 +30,13 @@ export class AppComponent {
     private pushNotificationService: PushNotificationService,
   ) {
     this.initializeApp();
-    this.pushNotificationService.read();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.pushNotificationService.read();
     });
   }
 

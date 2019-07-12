@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PushNotificationService } from '../providers/push-notification.service';
-
+import { Platform } from '@ionic/angular';
 @Component({
   selector: 'app-list',
   templateUrl: 'list.page.html',
@@ -21,7 +21,7 @@ export class ListPage implements OnInit {
     'build'
   ];
   public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor(private pushNotificationService: PushNotificationService) {
+  constructor(private platform: Platform, private pushNotificationService: PushNotificationService) {
     for (let i = 1; i < 11; i++) {
       this.items.push({
         title: 'Item ' + i,
@@ -33,12 +33,16 @@ export class ListPage implements OnInit {
 
   ionViewDidEnter() {
     console.log('ionViewDidEnter');
-    this.pushNotificationService.subscribeToTopic('list');
+    this.platform.ready().then(() => {
+      this.pushNotificationService.subscribeToTopic('list');
+    });
   }
 
   ionViewDidLeave() {
     console.log('ionViewDidLeave');
-    this.pushNotificationService.unsubscribeFromTopic('list');
+    this.platform.ready().then(() => {
+      this.pushNotificationService.unsubscribeFromTopic('list');
+    });
   }
 
   ngOnInit() {
