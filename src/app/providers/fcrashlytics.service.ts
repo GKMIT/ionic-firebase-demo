@@ -16,7 +16,7 @@ export class FcrashlyticsService {
       console.log('platform ready');
       try {
         const crashlytics = this.firebaseCrashlytics.initialise();
-        crashlytics.crash();
+        // crashlytics.crash();
         crashlytics.logException('my caught exception');
       } catch (error) {
         console.log('Error starting firebaseCrashlytics', error);
